@@ -1,5 +1,4 @@
-//recursion is a problem solving technique where the solution depends 
-//on solutions to smaller instances of the same problem 
+//recursion is a problem solving technique where the solution depends on solutions to smaller instances of the same problem 
 //the function will call itself 
 
 function recursiveFibonacci(n) {
