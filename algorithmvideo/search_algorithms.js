@@ -70,7 +70,7 @@ function search(arr, target, leftIndex, rightIndex) {
     }
 };
 
-console.log([-5,2,4,6,10], 6) //3
+console.log(recursiveBinarySearch([-5,2,4,6,10], 6)) //3
 
 //Big-O = O(logn)
 //not a for loop but search function being called recursively and input size is being cut in half with every call
