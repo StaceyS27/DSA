@@ -21,11 +21,11 @@ function bubbleSort(arr) {
     } while (swapped)
 };
 
-const arr = [8, 20, -2, 4, 6]
-bubbleSort(arr)
-console.log(arr)
+// const arr = [8, 20, -2, 4, 6]
+// bubbleSort(arr)
+// console.log(arr)
 
-//Big-O - O(n^2) quadratic time complexity bc has 2 loops; a for loop inside the while do loop
+//Big-O - O(n^2) quadratic time complexity bc has 2 (nested) loops; a for loop inside the while do loop
 
 //_______________________Insertion Sort_________________________
 
@@ -89,3 +89,44 @@ console.log(quickSort(array2));
 //Worst case - O(n^2) when array is already sorted bc iterating with both for loop and recursively 
 //Avg case - O(nlogn) with every recursion, the size of array that reenters the quickSort function decreases - O(logn)
 //but also * n because of the for loop iterating through the whole array 
+
+//___________________________Merge Sort__________________________________
+
+//the input array is continously split into halves into single element arrays are created
+//on each level of the "recursion tree" starting from the bottom the left and right arrays are compared, the lower number pushed to sorted array
+//the while loop continues if neither the left and right arrays are not empty after first position comparison
+//goes to return statement of merge function when either arrays are empty
+//then back up the next level to repeat comparison
+
+//2 parts: 1. make single element arrays 2. compare left and right arrays
+
+function mergeSort(arr) {
+    if(arr.length < 2) {
+        return arr
+    };
+
+    const mid = Math.floor(arr.length/2)
+    const leftArr = arr.slice(0, mid)     //up to but not including mid
+    const rightArr = arr.slice(mid)       //from mid to end of array 
+
+    return merge(mergeSort(leftArr), mergeSort(rightArr))    //the results of the recursive calls are passed to merge function for merging 
+
+    function merge(leftArr, rightArr) {              //merge function merges two sorted arrays and puts them to a single array 
+        const sortedArr = []
+
+        while(leftArr.length && rightArr.length) {       //0 is a falsey value
+            if(leftArr[0] <= rightArr[0]) {
+                sortedArr.push(leftArr.shift());        //shift method removes first element of array and returns it, then pushed to sorted array
+            } else {
+                sortedArr.push(rightArr.shift())
+            }
+        }
+
+        return [...sortedArr, ...leftArr, ...rightArr]
+    }
+};
+
+const arr = [8, 20, -2, 4, -6]
+console.log(mergeSort(arr))
+
+//Big-O: O(nlogn) - has a while loop but also inputs reduced in half from the mergeSort function (logn)
