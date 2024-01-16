@@ -87,5 +87,5 @@ const array2 = [8, 20, -2, 4, 6]
 console.log(quickSort(array2));
 
 //Worst case - O(n^2) when array is already sorted bc iterating with both for loop and recursively 
-//Avg case - O(nlogn) with every recursion, the size of array that reenters the quickSort function decreases
+//Avg case - O(nlogn) with every recursion, the size of array that reenters the quickSort function decreases - O(logn)
 //but also * n because of the for loop iterating through the whole array 
