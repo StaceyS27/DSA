@@ -48,3 +48,28 @@ console.log(climbingStaircase(5)) // 8
 console.log(climbingStaircase(6)) // 13
 
 //Big-0 = O(n) linear time complexity bc it has a for loop 
+
+//___________________TowerOfHanoi______________________________
+
+//TODO: Look at another video - dont understand *********************
+
+
+function towerOfHanoi(n, sourceRod, auxiliaryRod, targetRod) {
+    if (n === 1) {
+        // If there's only one disk, move it from source to target
+        console.log(`Move disk 1 from ${sourceRod} to ${targetRod}`);
+        return;
+    }
+
+    // Move n-1 disks from source to auxiliary using target as auxiliary
+    towerOfHanoi(n - 1, sourceRod, targetRod, auxiliaryRod);
+
+    // Move the nth disk from source to target
+    console.log(`Move disk ${n} from ${sourceRod} to ${targetRod}`);
+
+    // Move the n-1 disks from auxiliary to target using source as auxiliary
+    towerOfHanoi(n - 1, auxiliaryRod, sourceRod, targetRod);
+}
+
+// Example: Solve Tower of Hanoi with 3 disks
+towerOfHanoi(3, 'A', 'B', 'C');
