@@ -73,3 +73,5 @@ function towerOfHanoi(n, sourceRod, auxiliaryRod, targetRod) {
 
 // Example: Solve Tower of Hanoi with 3 disks
 towerOfHanoi(3, 'A', 'B', 'C');
+
+//Big-O = O(2^n)
