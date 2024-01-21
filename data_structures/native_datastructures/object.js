@@ -47,6 +47,17 @@ console.log(valuesArray)        // ['John, 25, 'Example City']
 const entriesArray = Object.entries(myObject)
 console.log(entriesArray)       // [['name', 'John'], ['age', 25], ['city', 'Example City']]
 
+//__________________________________________________________________________________
+
+// object function and method Big-O time complexity
+
+// insert | O(1) - like arrays with extra space. are arrays under the hood where keys are hased to a number and then divided by number of pairs present. modulo answer determines index of value (?)
+// remove | O(1)
+// access | O(1)
+// search | O(n) - can look for property within object ex: if(keyToSearch in myObject) 'in' being a keyword
+// Object.keys() | O(n)
+// Object.values() | O(n)
+// Object.entries() | O(n)
 
 
 
