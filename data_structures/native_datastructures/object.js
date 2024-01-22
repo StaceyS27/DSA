@@ -60,5 +60,8 @@ console.log(entriesArray)       // [['name', 'John'], ['age', 25], ['city', 'Exa
 // Object.entries() | O(n)
 
 
+// ** O(n) if it depends on size. accessing with dot or bracket does not (?)
+
+
 
 

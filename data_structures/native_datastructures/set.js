@@ -1,5 +1,5 @@
 // a set is a data structure that can hold a collection of unique values
-// can contain a mic of data types ex: strings, booleans, numbers, objects etc
+// can contain a mix of data types ex: strings, booleans, numbers, objects etc
 // are iterables - can use for of loop 
 
 // Set vs Array 
