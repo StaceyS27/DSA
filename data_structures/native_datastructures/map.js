@@ -20,8 +20,10 @@ console.log(map.has('a'))       // will output true because 'has' method checks 
 
 console.log(map.size)       // expect 2 
 
-map.clear()     // now no key value pairs from below in the console 
+//map.clear()     // now no key value pairs from below in the console 
 
 for(const [key, value] of map) {
     console.log(`${key}: ${value}`)
 }
+
+console.log(map) // Map(2) {'a' => 1, 'b' => 2}
