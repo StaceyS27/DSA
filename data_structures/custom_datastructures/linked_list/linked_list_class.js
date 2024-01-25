@@ -35,14 +35,34 @@ class Linkedlist {                  // when a linked list is instatiated, it wil
         }
         this.size++                     // size of linked list to increase whether the list was empty or not 
     }
+
+    print() {                               // method to print linked list values 
+        if(this.isEmpty()) {
+            console.log('List is empty')
+        } else {
+            let curr = this.head                // current/this.head is a node so has the same properties curr.value and curr.next (pointing to either another node or null)
+            let listValues = ''
+
+            while(curr) {                       // while current value isn't at null (is truthy), add value to string and ... (below)
+                listValues += `${curr.value} `
+                curr = curr.next                 // and change current node to next one. if the next node reenters and its null, while loop stops 
+            }
+            console.log(listValues)
+        }
+    }
+
 }
 
 //_________________________________________________________________________________________________
 
 const list = new Linkedlist()                       // new instance of LinkedList class 
-console.log("list is empty? ", list.isEmpty())
-console.log("list size: ", list.getSize())
+console.log("list is empty? ", list.isEmpty())      // true 
+console.log("list size: ", list.getSize())          // 0
+list.print()                                        // List is empty 
 
 list.prepend(10)
+list.print()                                        // 10
+
 list.prepend(20)
 list.prepend(30)
+list.print()                                        // 30 20 10 
