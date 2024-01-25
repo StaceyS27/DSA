@@ -7,7 +7,7 @@
         // just need to change the pointer, unlike array which need move elements and change their indices ?
 
 // drawback: accessing an element has a linear time complexity O(n)
-    // arrays have O(1) | linear bc have to pass every node to know where the next is (not contiguous)
+    // arrays have O(1) | linear bc have to pass every node to know where the next is (not contiguous) ?
 
 
 

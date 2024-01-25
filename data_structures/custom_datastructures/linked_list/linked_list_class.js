@@ -1,4 +1,4 @@
-// linked lists container nodes
+// linked lists contain nodes
 
 // an isolated node contains 
     // 1. value
@@ -11,7 +11,7 @@ class Node {                        // every time a node is added to a linked li
     }
 }
 
-class Linkedlist {                  // when a linked list is instatiated, it will be empty and its head, which usually points to the first node, will point to node 
+class Linkedlist {                  // when a linked list is instatiated, it will be empty and its head, which usually points to the first node, will point to null 
     constructor() {
         this.head = null
         this.size = 0               // tracks # of nodes in linked list | when a node is added, increment by 1, when removed decrement by 1 
@@ -24,6 +24,17 @@ class Linkedlist {                  // when a linked list is instatiated, it wil
     getSize() {
         return this.size            // return size of linked list (# of nodes)
     }
+
+    prepend(value) {                       // method to add a node to a linked list at the beginning with a value passed in as an argument 
+        const node = new Node(value)        // instance of Node class instatiated
+        if (this.isEmpty()) {               // adds node to list at the beginning and assigns it as the head if the linked list is empty and next pointer is still default to null
+            this.head = node
+        } else {
+            node.next = this.head        // if the list is not empty, the next pointer for the newly instatiated node will point to the list's current head 
+            this.head = node            // change the head from the current head of the non-empty linked list to the node added to the start of the list 
+        }
+        this.size++                     // size of linked list to increase whether the list was empty or not 
+    }
 }
 
 //_________________________________________________________________________________________________
@@ -31,3 +42,7 @@ class Linkedlist {                  // when a linked list is instatiated, it wil
 const list = new Linkedlist()                       // new instance of LinkedList class 
 console.log("list is empty? ", list.isEmpty())
 console.log("list size: ", list.getSize())
+
+list.prepend(10)
+list.prepend(20)
+list.prepend(30)
