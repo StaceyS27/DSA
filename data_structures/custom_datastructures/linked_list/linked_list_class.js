@@ -36,6 +36,20 @@ class Linkedlist {                  // when a linked list is instatiated, it wil
         this.size++                     // size of linked list to increase whether the list was empty or not 
     }
 
+    append(value) {                         // method to add a node at the end of the linked list
+        const node = new Node(value)        // first create the new node by creating a new instance of the Node class    
+        if(this.isEmpty()) {                // when linked list is empty, make head the new node 
+            this.head = node
+        } else {                            // if the linked list is not empty, designate the head node as the prev
+            let prev = this.head
+            while(prev.next) {              // as long as the next pointer on the current prev node isnt on null (is truthy) ...
+                prev = prev.next            // change prev to be the node thats designated as next to the current prev
+            }                               // because the last prev's (node's) next property will be null, will not enter while loop and prev will be the last node in the list
+            prev.next = node                // to append the newly instatiated node to the list, make it the next of prev (the previous last node)
+        }
+        this.size++
+    }
+
     print() {                               // method to print linked list values 
         if(this.isEmpty()) {
             console.log('List is empty')
