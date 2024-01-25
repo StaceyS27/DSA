@@ -80,3 +80,16 @@ list.print()                                        // 10
 list.prepend(20)
 list.prepend(30)
 list.print()                                        // 30 20 10 
+
+list.append(0)                                      // add to the end of the linked list
+list.append(-10)
+list.print()                                        // 30 20 10 0 -10
+
+//__________________________________________________________________________________________________
+
+// Time Complexity 
+
+// prepend: O(1) | does not depend on number of nodes present
+
+// append: O(n) | while loop is present and have to traverse the list to find the last node then append the newly created node
+    // there is a way to have O(1) time complexity with the use of a tail pointer 
