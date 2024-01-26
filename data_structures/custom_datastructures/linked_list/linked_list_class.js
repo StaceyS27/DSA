@@ -68,6 +68,26 @@ class Linkedlist {                  // when a linked list is instatiated, it wil
         }
     }
 
+    removeFrom(index) {                             // method for removing a node given an index | involves moving pointers to disconnect from list 
+        if(index < 0 || index >= this.size) {       // if the index for remmoving the node doesnt exist, return null
+            return null 
+        }
+        let removedNode
+        if(index === 0) {                                                 
+            removedNode = this.head                 // if index of node to remove is 0, assign the current head to removedNode
+            this.head = this.head.next              // and assign head to current head's next pointer 
+        } else {                                    // handling cases where index > 0
+            let prev = this.head                    // assign prev pointer to head and use for loop to advance it to the node prior to the one to be removed 
+            for(let i = 0; i < index-1; i++) {      
+                prev = prev.next                                 
+            }                                       // prev is now node prior to one being removed
+            removedNode = prev.next                 // the next pointer on previous node (previous to the one that will be removed) is point to the node to be removed
+            prev.next = removedNode.next            // the previous node's next pointer will now point to the node that the remove node's next pointer was pointing to          
+        }                                           // disconnected removedNode from linked list 
+        this.size--
+        return removedNode.value
+    }
+
     print() {                               // method to print linked list values 
         if(this.isEmpty()) {
             console.log('List is empty')
@@ -109,6 +129,15 @@ list.print()
 list.insert(50, 2)                                  // 10 30 50 20 10 0 -10
 list.print()
 console.log(list.getSize())                         // 7 
+
+console.log(list.removeFrom(10))                    // null because index does not exist 
+
+console.log(list.removeFrom(0))                     // return removed node '10'
+list.print()                                        // 30 50 20 10 0 -10  (previous list above)
+
+console.log(list.removeFrom(1))                     // '50'
+list.print()                                        // 30 20 10 0 -10 
+console.log(list.getSize())
 
 //__________________________________________________________________________________________________
 
