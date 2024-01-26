@@ -103,6 +103,13 @@ list.append(0)                                      // add to the end of the lin
 list.append(-10)
 list.print()                                        // 30 20 10 0 -10
 
+list.insert(10,0)                                   // 10 30 20 10 0 -10
+list.print()
+
+list.insert(50, 2)                                  // 10 30 50 20 10 0 -10
+list.print()
+console.log(list.getSize())                         // 7 
+
 //__________________________________________________________________________________________________
 
 // Time Complexity 
