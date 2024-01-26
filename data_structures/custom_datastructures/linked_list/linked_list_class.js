@@ -50,6 +50,24 @@ class Linkedlist {                  // when a linked list is instatiated, it wil
         this.size++
     }
 
+    insert(value, index) {                          // method to insert a node at any index given a value and index
+        if (index < 0 || index > this.size) {       // don't do anything if the index provided is negative or larger than size of linked list
+            return
+        }
+        if(index === 0) {                       // if want to insert at index 0, use prepend method 
+            this.prepend(value)
+        } else {
+            const node = new Node(value)        // create a new node using value passed in insertion method
+            let prev = this.head                // assign prev pointer to only other "pointer" present: this.head
+            for(let i=0; i < index-1; i++) {    // the loop will finish when prev is pointing to index before desired index
+                prev = prev.next
+            }
+            node.next = prev.next               // the new nodes next will be pointing to the previous nodes nodes next (the one the new node will follow and got in b/w of)
+            prev.next = node                    // the previous nodes next will now be the new node
+            this.size++
+        }
+    }
+
     print() {                               // method to print linked list values 
         if(this.isEmpty()) {
             console.log('List is empty')
