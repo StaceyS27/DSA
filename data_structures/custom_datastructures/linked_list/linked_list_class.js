@@ -88,6 +88,29 @@ class Linkedlist {                  // when a linked list is instatiated, it wil
         return removedNode.value
     }
 
+    removeValue(value) {                             // will remove the first node whose value matches the one passed as argument 
+        if(this.isEmpty()) {                         // if linked list is empty, return null - unable to remove 
+            return null
+        } 
+        if(this.head.value === value) {             // handles scnerio if head of list equals value to be removed
+            this.head = this.head.next              // assign new head to be next pointer of head (the following node) | detaches 1st node, which is to be removed 
+            this.size--                             // decrease size of linked list 
+            return value
+        } else {                                                            // handles case if value of node to be removed isn't in the head 
+            let prev = this.head                                            // new prev pointer assigned to head
+            while(prev.next && prev.next.value !== value) {                 // change prev to be prev.next while prev.next is truthy (not null) and prev.next's value is not euqal to value passed in       
+                prev = prev.next                                            // will exist while loop with prev pointer right befpre node to be removed or at the last node (prev.next is falsey | null | value does not exist in list)
+            }
+            if(prev.next) {                                     // if prev.next is truthy, in the case when prev pointer lands right before node to be removed, do below ...
+                const removedNode = prev.next                         // assign removedNode to be equal to prev.next
+                prev.next = removedNode.next                    // prev.next (node right before) will now point to the node after the node to be removed (removedNode.next), disconnecting removedNode
+                this.size--
+                return value
+            }
+            return null                                         // if prev lands on last node after while loop, prev.next will be falsey so will land here and return null
+        }      
+    }
+
     print() {                               // method to print linked list values 
         if(this.isEmpty()) {
             console.log('List is empty')
@@ -137,7 +160,17 @@ list.print()                                        // 30 50 20 10 0 -10  (previ
 
 console.log(list.removeFrom(1))                     // '50'
 list.print()                                        // 30 20 10 0 -10 
-console.log(list.getSize())
+console.log(list.getSize())                         // 5
+
+console.log(list.removeValue(10))                   // will return 10, value removed
+list.print()                                        // now 30 20 0 -10
+
+console.log(list.removeValue(30))                   // 30
+list.print()                                        // 20 0 -10
+
+console.log(list.removeValue(100))                  // null | value does not exist
+list.print()                                        // 20 0 -10
+console.log(list.getSize())                         // 3
 
 //__________________________________________________________________________________________________
 
@@ -147,3 +180,8 @@ console.log(list.getSize())
 
 // append: O(n) | while loop is present and have to traverse the list to find the last node then append the newly created node
     // there is a way to have O(1) time complexity with the use of a tail pointer 
+
+// remove node (remove when given an index or value)
+    // removing the head: O(1) | constant time complexity as there is a pointer
+    // removing the rest of the nodes: O(n) | as the node may be at the end of the linked list and may need to traverse the entire list
+        // depends on the number of nodes present 'n'
