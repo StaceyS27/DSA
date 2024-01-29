@@ -127,6 +127,18 @@ class Linkedlist {                  // when a linked list is instatiated, it wil
         return -1                                 // the while loop will not continue when curr is at null (falsey) and happens when the value isn't found in linked list 
     }
 
+    reverse() {                                   // method to reverse linked list | reverses direction of pointers from left to right to right to left | last node becomes the head 
+        let prev = null                           // prev pointer pointing to null (value before head)
+        let curr = this.head                                      
+        while (curr) {
+            let next = curr.next                // next | another pointer present that points to curr.next
+            curr.next = prev                    // moves next point on current from pointing to next node to previous node
+            prev = curr                         // advances prev pointer to curr pointer
+            curr = next                         // advances curr pointer to next pointer
+        }
+        this.head = prev                        // loop exists when curr is on null & that's why the head has to be where the prev pointer is 
+    }
+
     print() {                               // method to print linked list values 
         if(this.isEmpty()) {
             console.log('List is empty')
@@ -191,6 +203,11 @@ console.log(list.getSize())                         // 3
 console.log(list.search(20))                        // 0
 console.log(list.search(-10))                       // 2
 console.log(list.search(500))                       // -1 
+
+list.print()                                        // 20 0 -10
+list.reverse()                                      // method does not return anything itself, will call print
+list. print()                                       // -10 0 20
+
 
 
 //__________________________________________________________________________________________________
