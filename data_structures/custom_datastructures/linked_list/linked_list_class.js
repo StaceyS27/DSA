@@ -111,6 +111,22 @@ class Linkedlist {                  // when a linked list is instatiated, it wil
         }      
     }
 
+    search(value) {                                 // method to return index of value passed in (the first index it appears in)
+        if(this.isEmpty()) {                        // if empty, value does not exist so return -1 
+            return -1
+        }
+        let i = 0                                   // i variable to keep track of what index we are in
+        let curr = this.head                        // current pointer pointing to head initially
+        while(curr) {                               // while current pointer (a node) isn't null .. 
+            if(curr.value === value) {
+                return i
+            }
+            curr = curr.next
+            i++
+        }
+        return -1                                 // the while loop will not continue when curr is at null (falsey) and happens when the value isn't found in linked list 
+    }
+
     print() {                               // method to print linked list values 
         if(this.isEmpty()) {
             console.log('List is empty')
