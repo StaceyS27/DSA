@@ -188,6 +188,11 @@ console.log(list.removeValue(100))                  // null | value does not exi
 list.print()                                        // 20 0 -10
 console.log(list.getSize())                         // 3
 
+console.log(list.search(20))                        // 0
+console.log(list.search(-10))                       // 2
+console.log(list.search(500))                       // -1 
+
+
 //__________________________________________________________________________________________________
 
 // Time Complexity 
