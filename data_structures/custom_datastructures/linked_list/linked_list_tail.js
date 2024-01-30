@@ -29,7 +29,7 @@ class LinkedList {
             let curr = this.head
             let listValues = ''
             while (curr) {
-                listValues += `${curr.value}`
+                listValues += `${curr.value} `
                 curr = curr.next
             }
             console.log(listValues)
@@ -70,7 +70,54 @@ class LinkedList {
         return value                         // return the value of the previous head node removed 
     }
 
-    removeFromEnd() {
-
+    removeFromEnd() {                        // method to remove node from the end
+        if(this.isEmpty()) {                 // if the linked list is empty, unable to remove so return null
+            return null
+        }
+        const value = this.tail.value       // store tail's node value in 'value' variable
+        if(this.size === 1) {               // if the size of the linked list is only 1 point head and tail to null, disconnecting the node from the linked list
+            this.head = null
+            this.tail = null
+        } else {
+            let prev = this.head
+            while(prev.next !== this.tail) {        // will exit while loop when prev pointer is on the node prior to the tail
+                prev = prev.next
+            }
+            prev.next = null                    // instead of having node that prev pointer is on point to the tail, have it point to null, disconnecting the previous tail from the list
+            this.tail = prev                    // make the node where the prev pointer is on the new tail 
+        }
     }
 }
+
+//__________________________________________________________________________________________________
+
+const list = new LinkedList()
+console.log('List is Empty?', list.isEmpty())        // List is Empty? true
+console.log('List Size ', list.getSize())            // List Size 0
+list.print()                                        // List is empty 
+
+list.append(1)
+list.append(2)
+list.append(3)
+list.prepend(0)
+
+list.print()                                        // 0 1 2 3
+console.log('List size ', list.getSize())           // List size 4 
+
+list.removeFromFront()                              
+list.print()                                        // 1 2 3
+list.removeFromEnd()
+list.print()                                        // 2 3 
+
+//______________________________________________________________________________________________________
+
+// constant time complexity | O(1)
+    // insertion from front - prepend
+    // insertion from end - append
+    // removal from front 
+
+// linear time complexity | O(n)
+    // removal from end 
+        // requires use prev pointer to traverse linked list to find node prior to tail node using while loop
+
+// can implement stack and queues using linked lists 

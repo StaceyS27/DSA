@@ -62,7 +62,7 @@ class Linkedlist {                  // when a linked list is instatiated, it wil
             for(let i=0; i < index-1; i++) {    // the loop will finish when prev is pointing to index before desired index
                 prev = prev.next
             }
-            node.next = prev.next               // the new nodes next will be pointing to the previous nodes nodes next (the one the new node will follow and got in b/w of)
+            node.next = prev.next               // the new node's next will be pointing to the previous nodes next (the one the new node will follow and got in b/w of)
             prev.next = node                    // the previous nodes next will now be the new node
             this.size++
         }
