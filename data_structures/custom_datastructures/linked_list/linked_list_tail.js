@@ -37,7 +37,7 @@ class LinkedList {
     }
 
     prepend(value) {                        // method to add node to front of linked list
-        const node = new Node()             // new instance of node class
+        const node = new Node(value)        // new instance of node class
         if(this.isEmpty()) {                // if linked list is empty, both head and tail pointers will point to new node - the only node
             this.head = node
             this.tail = node 
@@ -48,8 +48,16 @@ class LinkedList {
         this.size++
     }
 
-    append(value) {
-
+    append(value) {                         // method to add node to the end of the linked list
+        const node = new Node(value)        // new instance of node class
+        if(this.isEmpty()) {
+            this.head = node
+            this.tail = node 
+        } else {                             // if linked list is not empty (below)
+            this.tail.next = node            // the next pointer on current tail will point to new node instead of null
+            this.tail = node                 // node to become new tail 
+        }
+        this.size++
     }
 
     removeFromFront() {
