@@ -60,8 +60,14 @@ class LinkedList {
         this.size++
     }
 
-    removeFromFront() {
-
+    removeFromFront() {                      // method to remove node from front 
+        if(this.isEmpty()) {                 // if list is empty, return null as unable to remove any node from the front
+            return null
+        }
+        const value = this.head.value        // storing head in variable 
+        this.head = this.head.next           // making the node the head is pointing to the new head, detaching previous head from list?
+        this.size--                          // decrement size of linked list by 1
+        return value                         // return the value of the previous head node removed 
     }
 
     removeFromEnd() {
