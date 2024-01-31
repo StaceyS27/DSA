@@ -1,3 +1,5 @@
+// exporting the linked list class so that it can be used to implement stacks and queues
+
 class Node {
     constructor (value) {
         this.value = value

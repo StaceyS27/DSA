@@ -9,7 +9,7 @@ class LinkedListStack {                         // create a new class
     }                                           // with all the methods from the linked list class 
 
     push(value) {                               // in a stack, items are added to the top and removed from the top first
-        this.list.prepend(value)                // FIFO
+        this.list.prepend(value)                // LIFO
     }                                           // can use prepend method because this.list is an instance of the Linked List class 
 
     pop() {                                     // (See above)
