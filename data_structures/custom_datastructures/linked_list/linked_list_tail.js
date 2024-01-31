@@ -86,6 +86,8 @@ class LinkedList {
             prev.next = null                    // instead of having node that prev pointer is on point to the tail, have it point to null, disconnecting the previous tail from the list
             this.tail = prev                    // make the node where the prev pointer is on the new tail 
         }
+        this.size--
+        return value 
     }
 }
 
