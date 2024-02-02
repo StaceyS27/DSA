@@ -51,9 +51,15 @@ class HashTable {                           // create new class hash table
        return undefined                                                 // otherwise, if no bucket at the index or key not found, return undefined
     }
 
-    remove(key){
-        const index = this.hash(key)            // hash the key, find it in the hashtable/array and make its new value undefined 
-        this.table[index] = undefined
+    remove(key){                                                         // method remove a key-value pair
+        const index = this.hash(key) 
+        const bucket = this.table[index]                                                                        
+        if(bucket){
+            const sameKeyItem = bucket.find(item => item[0] === key)      // return the first subarray whose first index equals the key 
+            if(sameKeyItem){
+                bucket.splice(bucket.indexOf(sameKeyItem), 1)           // splice method: arr.splice(start, deletecount, item1, item2) - saying to delete 1 at the index where the subarray key equals key passed to method 
+            }                                                           // start: the index to start changing the array | deletecount: # of elements to remove from the array | item1 etc: elements to add at the 'start' index 
+        }           
     }
 
     display() {                                             // method to display key value pairs in the hash table
