@@ -28,7 +28,7 @@ class HashTable {                           // create new class hash table
         const index = this.hash(key)                                            // key hashed to an index
         const bucket = this.table[index]                                        // putting the value space at that index in a variable 
         if(!bucket) {                                                            // if there is no bucket array,
-            bucket = [[key, value]]                                              // the bucket variable will now be a larger array that will take in subarrays as elements 
+            this.table[index] = [[key, value]]                                              // the bucket variable will now be a larger array that will take in subarrays as elements | this.table[index] = [the array w subarry] need to assign the value/array to the hash table directly 
         } else {                                                                 // if there is a bucket array associated with that index            
             const sameKeyItem = bucket.find(item => item[0] === key)            // look in the larger array to see if there is any item(subarray) at position 0 with the same key | [[0,1], [0,1]]
             if(sameKeyItem){                                                    // find method returns element (subarray) that meets criteria = samekeyitem
@@ -79,16 +79,31 @@ const table = new HashTable(50)     // table is new instance of hashtable class
 
 table.set("name", "Bruce")
 table.set("age", 25)
-table.display()         // 1  25
-                        // 17 Bruce      
+table.display()         // 1  25                                                            | collison method: 1 [['age', 25]]
+                        // 17 Bruce                                                             17 [['name', 'Bruce']]
                         
-console.log(table.get("name"))          // Bruce | get the value at the key "name"
+console.log(table.get("name"))          // Bruce | get the value at the key "name" |   Collions:  'Bruce'
 
-table.remove("name")                
-table.display()                     // 1 25 | name, bruce removed 
+table.remove("name")                                                          // collison methods: 1[['age', 25]]
+table.display()                     // 1 25 | name, bruce removed               |                  17 []     <--- removed name, Bruce
+
+table.set("name", "Bruce")
+table.set("mane", 'Clark')
+table.display()                 // collision method: 17 [['name', 'Bruce'], ['mane', 'Clark]] - both keys map to index 17 but now added to larger array as seperate subarrays bc not the same key 
 
 // if instead of remove, we kept name and bruce and then try to call the set function with "mane" and "clark",
 // would cause a collision bc name and mane have the same letters and would therefore map to the same index: 17
 // have to write code to handle collision 
+
+//___________________________________________________________________________________________________________________________
+
+// Time Complexity
+
+// get, set, and remove methods have a find method within them 
+// so can have time complexity of o(n)
+// but having to find and look through the "bucket" array only happens when hashing functions arent great
+// and multiple keys hash to the same index 
+// if the hashing is good, will not have any collisions so wont need to use the find method to look for the key value pair and perform set, get, or remove
+// instead can use methods implemented on 'hashtable implementation' file, which just use the index to look up values 
 
 
