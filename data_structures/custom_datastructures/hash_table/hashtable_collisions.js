@@ -1,10 +1,11 @@
 // same class with some changes to the method codes to handle collisions. changes to:
     // 1. set
     // 2. get 
+    // 3. remove 
 
 // in a collision, instead of just replacing the value at an index even though the keys were not the same, but mapped to the same index,
 // the hashmap is implemented so that there is a bucket at each index, if it has elements in it
-// visual representation: 1 => [[key, value], .. ]
+// visual representation: 1(index) => [[key, value], .. ] <----- hash table 
 // each index has an array (bucket) that has subarrays inside of it with key-value pairs
 // however, if a key is already present, the value is just updated (see set method below)
 
@@ -38,9 +39,16 @@ class HashTable {                           // create new class hash table
         }
     }                       
 
-    get(key) {                                  // method to get the value given a key
-        const index = this.hash(key)            // bc the value is stored in the array with an association to an index, first hash the key to an index
-        return this.table[index]                // then access the value given that index
+    get(key) {                                                          // method to get the value given a key
+       const index = this.hash(key)                                     // hash the key to an index to find the associated bucket/array in the hash table 
+       const bucket = this.table[index]
+       if(bucket) {                                                     // if there is a bucket, find a subarray that has at position 0 the same key liked the one passed in the method            
+        const sameKeyItem = bucket.find(item => item[0] === key)
+        if(sameKeyItem){                                                // if subarray with same key found, return what is in the 1st position, the value 
+            return sameKeyItem[1]
+        }
+       }
+       return undefined                                                 // otherwise, if no bucket at the index or key not found, return undefined
     }
 
     remove(key){
