@@ -100,10 +100,11 @@ table.display()                 // collision method: 17 [['name', 'Bruce'], ['ma
 // Time Complexity
 
 // get, set, and remove methods have a find method within them 
-// so can have time complexity of o(n)
+// so can have time complexity of o(n) - worst time complexity 
 // but having to find and look through the "bucket" array only happens when hashing functions arent great
 // and multiple keys hash to the same index 
 // if the hashing is good, will not have any collisions so wont need to use the find method to look for the key value pair and perform set, get, or remove
-// instead can use methods implemented on 'hashtable implementation' file, which just use the index to look up values 
+// instead can use methods implemented on 'hashtable implementation' file, which just use the index to look up values  - o(1) time complexity - avg time complexity 
+    // accessing values happens in constant time complexity 
 
 
