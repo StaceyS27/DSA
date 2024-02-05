@@ -45,6 +45,20 @@ class BinarySearchTree {            // when a new instance of the BST class is c
             }
         }
     }
+                                                                // root not defined in the method initially (?) - maybe established when passed in when method is called like below. in recursion, child nodes become root 
+    search(root, value) {                                       // method to check if a node exist given its value 
+        if(!root) {                                             // if there is no root, no nodes present so node passed in cannot be found                         
+            return false
+        } else {                                                // if there is a root ... 
+            if(root.value === value) {                          // if the node value passed in equals the node value, node found so return true 
+                return true
+            } else if(value < root.value) {                     // else if value is less than root value,
+                return this.search(root.left, value)            // call method again using the child L node as the new root to compare the value passed in to 
+            } else {                                            // if the value passed in is greater than the root value,
+                return this.search(root.right, value)           // call search method again (recursion) using the R node as the new root
+            }
+        }
+    }
 
 
 }
@@ -55,3 +69,12 @@ class BinarySearchTree {            // when a new instance of the BST class is c
 
 const bst = new BinarySearchTree()
 console.log("Tree is empty?", bst.isEmpty())            // consoles: Tree is empty ? true
+
+bst.insert(10)
+bst.insert(5)
+bst.insert(15)
+
+console.log(bst.search(bst.root, 10))               // true
+console.log(bst.search(bst.root, 5))                // true
+console.log(bst.search(bst.root, 15))               // true
+console.log(bst.search(bst.root, 20))               // false 
