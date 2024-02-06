@@ -18,3 +18,8 @@
     // 1. read the data of the node
     // 2. visit the left subtree (completely) then, 
     // 3. visit the right subtree (from bottom up) 
+
+// Inorder Traversal
+    // 1. visit the left subtree            (completely down until no more L children are available?)
+    // 2. read the data of the node         (then record the node value)
+    // 3. visit the right subtree           (if none, go back to parent node and repeat steps )

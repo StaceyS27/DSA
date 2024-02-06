@@ -61,10 +61,18 @@ class BinarySearchTree {            // when a new instance of the BST class is c
     }
 
     preOrder(root) {                            // type of DFS traversal where node is visited, followed by the left side of the tree completely, then the right 
-        if(root){                               // traversal will print all the node values following a certain pattern 
+        if(root){                               // traversal will print all the node values following a certain pattern (with the console.log)
             console.log(root.value)
-            this.preOrder(root.left)
+            this.preOrder(root.left)            // then method will be called again with the L or R child as the new root 
             this.preOrder(root.right)
+        }
+    }
+
+    inOrder(root){                              // method to print out/traverse BST using 'inorder pattern': visit left subtree, read node data, visit right subtree 
+        if(root){                               // if there is root, meaning BST is not empty,
+            this.inOrder(root.left)             // keep calling method recursively to change what is considered root node by traversing down the left side of the tree
+            console.log(root.value)             // once there are no L child nodes, print value at that point
+            this.inOrder(root.right)            // then look for R child of the new root node for the subtree, if there isn't any, go back up to parent node and start process again  
         }
     }
 
@@ -90,3 +98,4 @@ console.log(bst.search(bst.root, 15))               // true
 console.log(bst.search(bst.root, 20))               // false 
 
 bst.preOrder(bst.root)                              // 10 5 3 7 15 
+bst.inOrder(bst.root)                               // 3 5 7 10 15 
