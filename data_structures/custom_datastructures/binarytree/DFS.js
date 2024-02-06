@@ -23,3 +23,8 @@
     // 1. visit the left subtree            (completely down until no more L children are available?)
     // 2. read the data of the node         (then record the node value)
     // 3. visit the right subtree           (if none, go back to parent node and repeat steps )
+
+// Postorder Traversal 
+    // 1. visit the left subtree
+    // 2. visit the right subtree
+    // 3. read the data of the node 

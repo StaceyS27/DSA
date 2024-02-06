@@ -76,6 +76,14 @@ class BinarySearchTree {            // when a new instance of the BST class is c
         }
     }
 
+    postOrder(root){                            // method traverse tree by: 
+        if(root){                               // if BST not empty,
+            this.postOrder(root.left)           // recursively visit all the L child nodes until there are none left 
+            this.postOrder(root.right)          // visit the right of the leaf node 
+            console.log(root.value)             // record the value, then repeat for parent nodes (go back up) and visit R since L already visited and continue the algorithm
+        }
+    }
+
 
 }
 
@@ -99,3 +107,4 @@ console.log(bst.search(bst.root, 20))               // false
 
 bst.preOrder(bst.root)                              // 10 5 3 7 15 
 bst.inOrder(bst.root)                               // 3 5 7 10 15 
+bst.postOrder(bst.root)                             // 3 7 5 15 10 
