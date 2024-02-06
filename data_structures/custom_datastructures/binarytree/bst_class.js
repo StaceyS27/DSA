@@ -60,6 +60,14 @@ class BinarySearchTree {            // when a new instance of the BST class is c
         }
     }
 
+    preOrder(root) {                            // type of DFS traversal where node is visited, followed by the left side of the tree completely, then the right 
+        if(root){                               // traversal will print all the node values following a certain pattern 
+            console.log(root.value)
+            this.preOrder(root.left)
+            this.preOrder(root.right)
+        }
+    }
+
 
 }
 
@@ -73,8 +81,12 @@ console.log("Tree is empty?", bst.isEmpty())            // consoles: Tree is emp
 bst.insert(10)
 bst.insert(5)
 bst.insert(15)
+bst.insert(3)
+bst.insert(7)
 
 console.log(bst.search(bst.root, 10))               // true
 console.log(bst.search(bst.root, 5))                // true
 console.log(bst.search(bst.root, 15))               // true
 console.log(bst.search(bst.root, 20))               // false 
+
+bst.preOrder(bst.root)                              // 10 5 3 7 15 
