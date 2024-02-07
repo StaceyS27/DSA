@@ -99,6 +99,22 @@ class BinarySearchTree {            // when a new instance of the BST class is c
         }
     }
 
+    min(root) {                                 // method to find the min node value in a binary search tree
+        if(!root.left) {                        // if no left child exist for the original root, or the new root established after every recursion, .. 
+            return root.value                   // return the root node's value (base case for when recusion will stop)
+        } else {                                
+            return this.min(root.left)          // if there is a left root, perform the min method on this bst data structure recursively to traverse down the left side of the tree
+        }                                       // until min node is found and there are no more L child nodes 
+    }
+
+    max(root) {                                 // method to return max node vakye in bst
+        if(!root.right) {
+            return root.value                   // same logic like above 
+        } else {
+            return this.max(root.right)
+        }
+    }
+
 
 }
 
@@ -125,3 +141,6 @@ bst.inOrder(bst.root)                               // 3 5 7 10 15
 bst.postOrder(bst.root)                             // 3 7 5 15 10 
 
 bst.levelOrder()                                    // 10, 5, 15, 3, 7 
+
+console.log(bst.min(bst.root))                      // 3
+console.log(bst.max(bst.root))                      // 15
