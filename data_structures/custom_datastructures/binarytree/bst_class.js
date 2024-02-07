@@ -84,6 +84,21 @@ class BinarySearchTree {            // when a new instance of the BST class is c
         }
     }
 
+    levelOrder(){                               // method to perform BFS on a binary search tree. (each level checked before going to next)
+        const queue = []                        // queue implemented as an array, but can be optimized using obj see queue_optimized.js. array increases time complexity with method like shift O(n)
+        queue.push(this.root)                   // push root of the bst into the queue array
+        while(queue.length){                    // while queue (the arr created) has a length of creater than 0. 0 is a falsey value 
+            let curr = queue.shift()            // removed root node from the front of the queue/arr and stored the removed node into a variable. shift returns removed element 
+            console.log(curr.value)             // node has value, left, and right properties 
+            if(curr.left){                      // in subsequent loops, the node in the front will not be the root and it will be removed and steps below will be repeated until queue is empty
+                queue.push(curr.left)
+            }
+            if(curr.right){
+                queue.push(curr.right)
+            }
+        }
+    }
+
 
 }
 
@@ -108,3 +123,5 @@ console.log(bst.search(bst.root, 20))               // false
 bst.preOrder(bst.root)                              // 10 5 3 7 15 
 bst.inOrder(bst.root)                               // 3 5 7 10 15 
 bst.postOrder(bst.root)                             // 3 7 5 15 10 
+
+bst.levelOrder()                                    // 10, 5, 15, 3, 7 

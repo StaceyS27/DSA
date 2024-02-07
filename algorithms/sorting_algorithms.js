@@ -114,7 +114,7 @@ function mergeSort(arr) {
     function merge(leftArr, rightArr) {              //merge function merges two sorted arrays and puts them to a single array 
         const sortedArr = []
 
-        while(leftArr.length && rightArr.length) {       //0 is a falsey value
+        while(leftArr.length && rightArr.length) {       //0 is a falsey value | while one of the arrays isn't empty 
             if(leftArr[0] <= rightArr[0]) {
                 sortedArr.push(leftArr.shift());        //shift method removes first element of array and returns it, then pushed to sorted array
             } else {
